@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h2>All Sales</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Customer</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.user_id }}</td>
+            <td>{{ sale.description }}</td>
+            <td>{{ sale.address }} {{ sale.zip_code }}</td>
+            <td>{{ sale.customer_first }} {{ sale.customer_last }}</td>
+            <td>{{ sale.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Total sales: {{ total }}</p>
+{% endblock %}
