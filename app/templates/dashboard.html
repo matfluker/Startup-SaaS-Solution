@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="row mb-4 text-center">
+    <div class="col-md-4 mb-3">
+        <a class="btn btn-outline-primary w-100" href="{{ url_for('calendar') }}">Calendar</a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a class="btn btn-outline-primary w-100" href="{{ url_for('performance') }}">Performance</a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a class="btn btn-success w-100" href="{{ url_for('new_sale') }}">Make an Order</a>
+    </div>
+</div>
+
+<h3>Your Recent Sales</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Customer</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.description }}</td>
+            <td>{{ sale.address }} {{ sale.zip_code }}</td>
+            <td>{{ sale.customer_first }} {{ sale.customer_last }}</td>
+            <td>{{ sale.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
